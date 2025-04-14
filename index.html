@@ -32,8 +32,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/config.js"></script>
-    <script src="js/auth.js"></script>
 </head>
 <body class="page-bg text-white">
     <div class="fixed top-4 right-4 z-50 flex items-center space-x-4">
@@ -140,8 +138,8 @@
     </div>
 
     <!-- 密码验证模态窗口 -->
-    <div id="passwordModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-        <div class="bg-[#111] border border-[#333] rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
+    <div id="passwordModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; display:flex; align-items:center; justify-content:center;">
+        <div id="passwordFormContainer" class="bg-[#111] border border-[#333] rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
             <h2 class="text-xl font-bold gradient-text mb-4">访问验证</h2>
             <p class="text-gray-300 mb-4">该网站需要密码才能访问，请输入正确的密码继续。</p>
             <form id="passwordForm" class="space-y-4">
@@ -149,13 +147,11 @@
                     <input type="password" id="passwordInput" class="w-full bg-[#1c2939] text-white border border-[#444] rounded px-4 py-2 focus:outline-none focus:border-[#00ccff]" placeholder="请输入访问密码" autofocus>
                     <div id="passwordError" class="text-red-500 text-sm mt-1 hidden">密码错误，请重试</div>
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-[#00ccff] to-[#0080ff] text-white py-2 px-4 rounded hover:opacity-90 transition-opacity">
-                    验证
-                </button>
+                <button type="submit" class="w-full bg-[#00ccff] text-white rounded px-4 py-2">提交</button>
             </form>
         </div>
     </div>
-    
+
     <!-- Toast提示 -->
 
     <div class="container mx-auto px-4 py-8 flex flex-col h-screen">
@@ -279,6 +275,9 @@
     <script src="js/ui.js"></script>
     <script src="js/api.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/auth.js"></script>
+    <script>
+        window.PASSWORD = "YOUR_ENV_PASSWORD"; // 部署时将此处替换为环境变量
+    </script>
+    <script src="js/password.js"></script>
 </body>
 </html>
